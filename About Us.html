@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+</head>
+<style>
+    :root {
+      --card: #ffffff;
+      --border: #e8e6df;
+      --text: #13151a;
+      --text2: #6b6f76;
+      --mono: 'JetBrains Mono', monospace;
+    }
+      #projects {
+      max-width: 900px;
+      margin: 120px auto;
+      padding: 0 20px;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 0px;
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: #ddccba;
+    }
+    .project-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--text);
+      margin: 0 0 0.5rem 0;
+    }
+    .project-card .project-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b5544a;
+      margin: 0 0 0.75rem 0;
+      font-weight: 500;
+    }
+    .project-card p {
+      font-size: 0.95rem;
+      color: var(--text2);
+      margin: 0;
+      flex-grow: 1;
+      line-height: 1.7;
+    }
+    #about{
+      font-family:'JetBrains Mono', monospace; 
+    }
+</style>
+<section>
+    <section id="projects">
+  <h2 class="section-heading">About</h2>
+  <p class="section-intro">
+At AURA Awareness, we believe that every life deserves the opportunity for early intervention and better outcomes. Our mission is to raise awareness about cancer, educate communities about the importance of early detection, and support initiatives that help identify cancer when treatment is most effective. By bringing people together through advocacy and fundraising, we hope to create a future where more lives are saved through timely diagnosis.  </p>
+
+  <div class="project-grid">
+
+    <!-- Project card 1 -->
+    <div class="project-card">
+      <h3>Raj Patel</h3>
+      <p class="project-eyebrow">CoFounder · UW-Madison</p>
+      <p>Raj Patel is an incoming freshman at the UW-Madison. <br> Prior to Wisconsin, Raj studied at the rigorous Illinois Mathematics and Science Academy. He aims to become a physician in Neuroscience through the intersection of computer science and communication. Research through Northwestern and the University of Illinois-Chicago gained him invaluable hands-on experience in not just prepping assays in the lab, but in understanding how disease impacts the people it touches. Thus, Raj cofounded this fundraiser to help combat disease. </br>
+</p>
+    </div>
+
+    <!-- Project card 2 -->
+    <div class="project-card">
+      <h3>Aydin Syed</h3>
+      <p class="project-eyebrow"> Cofounder · Case Western Reserve University</p>
+      <p>Aydin Syed is an incoming Freshman at Case Western Reserve University in Ohio. He studied at the Illinois Mathematics and Science Academy. Aydin aims to become a medical practitioner in orthopedics or oncology. Aydin had a mother and aunt who were diagnosed with breast cancer, and were thankfully saved by early detection.  This experience motivated him to start this fundraiser to benefit cancer research. He also created his own fundraiser using his birthday money when he was younger and raised 1500 dollars to send to pediatric cancer research.</p>
+  
+    </div>
+
+    <!-- Project card 3 -->
+    <div class="project-card">
+      <h3>Krish Sav</h3>
+      <p class="project-eyebrow">Vice President · IMSA</p>
+      <p>Pratayanch Sav (Krish) is a rising Senior at the Illinois Mathematics and Science Academy. Krish aims to become a neurosurgeon and attain  a PhD in the long run. Krish has contributed to the field of oncology and neurology by helping develop and assess a project dedicated to helping provide 98.2% accurate diagnosis and prognosis based on past MRI brain scans of patients. His research with cancer and neuroscience allowed him to pursue further means of outreach for underserved communities, inspiring his commitment to expanding AURA’s mission of equitable access to early detection and cutting-edge medical research.</p>
+      <div class="project-links">
+        <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank">GoFundMe</a>
+      </div>
+    </div>
+
+    <!-- 4th project -->
+    <div class="project-card">
+      <h3>Nick Patel</h3>
+      <p class="project-eyebrow"> Tresurer · Georgia Tech University</p>
+      <p> Nick Patel is an incoming freshman at the Georgia Institute of Technology.
+
+Nick has a passion for innovation at the intersection of technology and healthcare. As Treasurer of his school's Future Business Leaders of America (FBLA) chapter, he developed strong leadership, organizational, and problem-solving skills while helping lead initiatives within his community. He aspires to study engineering and contribute to advancements in early cancer detection technology, with the goal of improving patient outcomes and making life-saving diagnoses more accessible. Through AURA Awareness, Nick hopes to combine his passion for service and innovation to support the fight against cancer and promote a healthier future. </p>
+    </div>
+
+    <!-- 5th project -->
+    <div class="project-card">
+      <h3>Max Ballesteros</h3>
+      <p class="project-eyebrow"> Art Head · IMSA</p>
+      <p> Investigated how page length relates to false positives in GPT-0, discovering GPT-0 flagged our human essays. I presented to an audience of 25 at the ISAAPT conference </p>
+    </div>
+  </div>
+</section>
