@@ -11,160 +11,254 @@
   <title>About Us — AURA Awareness</title>
 
   <style>
-    /* Page-specific styles for the About page's project-card layout.
-       Shared tokens (--color-ink, --color-accent, etc.) and the navbar
-       come from css/style.css, loaded above. */
-
-    #projects {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 2rem 5rem;
+    .about-hero{
+      max-width:1200px;
+      margin:4rem auto 6rem;
+      padding:0 2rem;
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:4rem;
+      align-items:center;
     }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+    
+    .about-hero h1{
+      font-family:'Instrument Serif',serif;
+      font-size:4rem;
+      line-height:0.95;
+      margin-bottom:1.5rem;
     }
-
-    .project-card {
-      background: #ffffff;
-      border: 1px solid var(--color-line);
-      border-radius: 16px;
-      padding: 1.75rem;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      display: flex;
-      flex-direction: column;
+    
+    .about-image img{
+      width:100%;
+      border-radius:24px;
+      display:block;
     }
-
-    .project-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--color-accent);
-      box-shadow: 0 12px 24px -16px rgba(32, 76, 235, 0.25);
+    
+    .hero-button{
+      display:inline-block;
+      margin-top:1.5rem;
+      padding:0.9rem 1.4rem;
+      border-radius:999px;
+      background:var(--color-accent);
+      color:white;
     }
-
-    .project-card h3 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 1.15rem;
-      color: var(--color-ink);
-      margin: 0 0 0.5rem 0;
+    
+    .mission-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.5rem;
     }
-
-    .project-card .project-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin: 0 0 0.75rem 0;
-      font-weight: 500;
+    
+    .mission-card{
+      padding:2rem;
+      border:1px solid var(--color-line);
+      border-radius:20px;
     }
-
-    .project-card p {
-      font-size: 0.92rem;
-      color: var(--color-ink-muted);
-      margin: 0;
-      flex-grow: 1;
-      line-height: 1.65;
-      font-weight: 300;
+    
+    .member-photo{
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      object-fit:cover;
+      margin-bottom:1rem;
     }
-
-    .project-links {
-      margin-top: 1.25rem;
+    
+    .cta-section{
+      text-align:center;
+      max-width:800px;
+      margin:6rem auto;
+      padding:0 2rem;
     }
-
-    .project-links a {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--color-accent);
-    }
-
-    .project-links a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 900px) {
-      .project-grid {
-        grid-template-columns: 1fr;
+    
+    @media (max-width:900px){
+    
+      .about-hero{
+        grid-template-columns:1fr;
+      }
+    
+      .about-hero h1{
+        font-size:3rem;
+      }
+    
+      .mission-grid{
+        grid-template-columns:1fr;
       }
     }
   </style>
 </head>
 <body>
+<!-- HERO -->
 
-  <header class="topbar">
-    <img src="AURA Logo.png"
-      alt="AURA"
-       class="navbar-logo">
-    <nav class="topbar-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="team.html">Our Team</a>
-      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="topbar-cta">Donate</a>
-    </nav>
-  </header>
+<section class="about-hero">
 
-  <div class="page-header">
-    <p class="section-eyebrow">About Us</p>
-    <h2 class="section-h2">The story behind AURA</h2>
-    <p class="page-header-sub">
-      At AURA Awareness, we believe that every life deserves the opportunity for early intervention and better outcomes. Our mission is to raise awareness about cancer, educate communities about the importance of early detection, and support initiatives that help identify cancer when treatment is most effective. By bringing people together through advocacy and fundraising, we hope to create a future where more lives are saved through timely diagnosis.
-    </p>
+  <div class="about-copy">
+    <p class="section-eyebrow">Our Story</p>
+
+```
+<h1>
+  Fighting cancer through awareness, education, and early detection.
+</h1>
+
+<p>
+  AURA Awareness was founded by students who have witnessed the impact
+  that cancer has on individuals, families, and communities. Through
+  education, advocacy, and fundraising, we aim to promote early detection
+  and support efforts that improve outcomes for patients worldwide.
+</p>
+
+<a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early"
+   class="hero-button">
+   Support Our Mission →
+</a>
+```
+
   </div>
 
-  <section id="projects">
-    <div class="project-grid">
+  <div class="about-image">
+    <img src="images/team.jpg" alt="AURA Awareness Team">
+  </div>
 
-      <!-- Project card 1 -->
-      <div class="project-card">
-        <h3>Raj Patel</h3>
-        <p class="project-eyebrow">Co-Founder · UW-Madison</p>
-        <p>
-          Raj Patel is an incoming freshman at the UW-Madison. Prior to Wisconsin, Raj studied at the rigorous Illinois Mathematics and Science Academy. He aims to become a physician in Neuroscience through the intersection of computer science and communication. Research through Northwestern and the University of Illinois-Chicago gained him invaluable hands-on experience in not just prepping assays in the lab, but in understanding how disease impacts the people it touches. Thus, Raj cofounded this fundraiser to help combat disease.
-        </p>
-      </div>
+</section>
 
-      <!-- Project card 2 -->
-      <div class="project-card">
-        <h3>Aydin Syed</h3>
-        <p class="project-eyebrow">Co-Founder · Case Western Reserve University</p>
-        <p>
-          Aydin Syed is an incoming freshman at Case Western Reserve University in Ohio. He studied at the Illinois Mathematics and Science Academy. Aydin aims to become a medical practitioner in orthopedics or oncology. Aydin had a mother and aunt who were diagnosed with breast cancer, and were thankfully saved by early detection. This experience motivated him to start this fundraiser to benefit cancer research. He also created his own fundraiser using his birthday money when he was younger and raised $1,500 to send to pediatric cancer research.
-        </p>
-      </div>
+<!-- MISSION -->
 
-      <!-- Project card 3 -->
-      <div class="project-card">
-        <h3>Krish Sav</h3>
-        <p class="project-eyebrow">Vice President · IMSA</p>
-        <p>
-          Pratayanch Sav (Krish) is a rising senior at the Illinois Mathematics and Science Academy. Krish aims to become a neurosurgeon and attain a PhD in the long run. Krish has contributed to the field of oncology and neurology by helping develop and assess a project dedicated to helping provide 98.2% accurate diagnosis and prognosis based on past MRI brain scans of patients. His research with cancer and neuroscience allowed him to pursue further means of outreach for underserved communities, inspiring his commitment to expanding AURA's mission of equitable access to early detection and cutting-edge medical research.
-        </p>
-        <div class="project-links">
-          <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank">GoFundMe →</a>
-        </div>
-      </div>
+<section class="mission-section">
 
-      <!-- Project card 4 -->
-      <div class="project-card">
-        <h3>Nick Patel</h3>
-        <p class="project-eyebrow">Treasurer · Georgia Tech</p>
-        <p>
-          Nick Patel is an incoming freshman at the Georgia Institute of Technology. Nick has a passion for innovation at the intersection of technology and healthcare. As Treasurer of his school's Future Business Leaders of America (FBLA) chapter, he developed strong leadership, organizational, and problem-solving skills while helping lead initiatives within his community. He aspires to study engineering and contribute to advancements in early cancer detection technology, with the goal of improving patient outcomes and making life-saving diagnoses more accessible. Through AURA Awareness, Nick hopes to combine his passion for service and innovation to support the fight against cancer and promote a healthier future.
-        </p>
-      </div>
+  <div class="section-header">
+    <p class="section-eyebrow">Our Mission</p>
+    <h2>Why We Exist</h2>
+  </div>
 
-      <!-- Project card 5 -->
-      <div class="project-card">
-        <h3>Max Ballesteros</h3>
-        <p class="project-eyebrow">Art Head · IMSA</p>
-        <p>
-          Investigated how page length relates to false positives in GPT-0, discovering GPT-0 flagged human-written essays. Presented findings to an audience of 25 at the ISAAPT conference.
-        </p>
-      </div>
+  <div class="mission-grid">
 
-    </div>
+```
+<div class="mission-card">
+  <h3>Educate</h3>
+  <p>
+    Provide accessible information about cancer prevention,
+    screening, and early detection.
+  </p>
+</div>
+
+<div class="mission-card">
+  <h3>Advocate</h3>
+  <p>
+    Promote awareness and encourage conversations about
+    proactive healthcare within our communities.
+  </p>
+</div>
+
+<div class="mission-card">
+  <h3>Support</h3>
+  <p>
+    Raise funds and support initiatives that contribute
+    to cancer research and patient care.
+  </p>
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- TEAM -->
+
+<section id="projects">
+
+  <div class="section-header">
+    <p class="section-eyebrow">Leadership</p>
+    <h2>Meet the Team</h2>
+  </div>
+
+  <div class="project-grid">
+
+```
+<div class="project-card">
+  <img src="images/raj.jpg" class="member-photo" alt="Raj Patel">
+
+  <h3>Raj Patel</h3>
+  <p class="project-eyebrow">Co-Founder · UW–Madison</p>
+
+  <p>
+    Interested in medicine, neuroscience, and disease research,
+    Raj helped establish AURA Awareness to promote education and
+    early detection initiatives.
+  </p>
+</div>
+
+<div class="project-card">
+  <img src="images/aydin.jpg" class="member-photo" alt="Aydin Syed">
+
+  <h3>Aydin Syed</h3>
+  <p class="project-eyebrow">Co-Founder · Case Western Reserve</p>
+
+  <p>
+    Inspired by his family's experience with cancer,
+    Aydin is passionate about expanding awareness and
+    supporting research that improves patient outcomes.
+  </p>
+</div>
+
+<div class="project-card">
+  <img src="images/krish.jpg" class="member-photo" alt="Krish Sav">
+
+  <h3>Krish Sav</h3>
+  <p class="project-eyebrow">Vice President · IMSA</p>
+
+  <p>
+    Krish combines interests in neuroscience and public service
+    to help advance AURA's mission and community outreach efforts.
+  </p>
+</div>
+
+<div class="project-card">
+  <img src="images/nick.jpg" class="member-photo" alt="Nick Patel">
+
+  <h3>Nick Patel</h3>
+  <p class="project-eyebrow">Treasurer · Georgia Tech</p>
+
+  <p>
+    Passionate about engineering and healthcare innovation,
+    Nick supports fundraising initiatives and organizational growth.
+  </p>
+</div>
+
+<div class="project-card">
+  <img src="images/max.jpg" class="member-photo" alt="Max Ballesteros">
+
+  <h3>Max Ballesteros</h3>
+  <p class="project-eyebrow">Creative Director · IMSA</p>
+
+  <p>
+    Max leads creative outreach and visual storytelling efforts
+    that help communicate AURA's mission to broader audiences.
+  </p>
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta-section">
+
+  <p class="section-eyebrow">Get Involved</p>
+
+  <h2>Help us build a future where more cancers are detected early.</h2>
+
+  <p>
+    Every donation supports awareness initiatives, educational outreach,
+    and efforts that encourage earlier diagnosis and better outcomes.
+  </p>
+
+<a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early"
+  class="hero-button">
+Donate Today → </a>
+
+</section>
+
   </section>
 
   <footer>
