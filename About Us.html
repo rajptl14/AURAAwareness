@@ -1,314 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — AURA Awareness</title>
-  <style>
-    :root {
-      --navy:   #080B1A;
-      --navy2:  #0E1228;
-      --purple: #7B35E8;
-      --violet: #9B4DFF;
-      --pink:   #D946C0;
-      --cyan:   #22D3EE;
-      --blue:   #3B82F6;
-      --white:  #F0F4FF;
-      --muted:  #8892B0;
-      --line:   rgba(123,53,232,0.25);
-      --grad:   linear-gradient(135deg, var(--cyan) 0%, var(--violet) 50%, var(--pink) 100%);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — AURA Awareness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:      #1A1023;
+    --ink-2:    #241732;
+    --ink-3:    #2E1D40;
+    --paper:    #FBF3EC;
+    --coral:    #FF7A59;
+    --gold:     #FFB86B;
+    --lavender: #C9A6FF;
+    --muted:    #B6A7C7;
+    --line:     rgba(201,166,255,0.16);
+    --dawn: linear-gradient(115deg, var(--coral) 0%, var(--gold) 52%, var(--lavender) 100%);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--coral);color:var(--ink);}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--navy);
-      color: var(--white);
-      font-family: 'Space Grotesk', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
+  em{font-style:italic;font-weight:400;}
 
-    /* ── Orbs ── */
-    .orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; }
-    .orb-1 { width: 600px; height: 600px; background: var(--violet); top: -150px; left: -100px; animation: drift1 18s ease-in-out infinite; }
-    .orb-2 { width: 500px; height: 500px; background: var(--cyan); bottom: 5%; right: -100px; animation: drift2 22s ease-in-out infinite; }
-    .orb-3 { width: 350px; height: 350px; background: var(--pink); top: 40%; left: 30%; animation: drift3 15s ease-in-out infinite; }
-    @keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(60px,80px)} }
-    @keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-80px,-60px)} }
-    @keyframes drift3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-50px)} }
-    @media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+  .grad-text{
+    background:var(--dawn);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
 
-    /* ── Topbar ── */
-    .topbar {
-      position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(20px);
-      background: rgba(8, 11, 26, 0.75);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar-inner {
-      max-width: 1100px; margin: 0 auto; padding: 0 2rem;
-      height: 72px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .navbar-logo {
-      height: 56px; width: 56px; border-radius: 50%; object-fit: cover;
-      border: 2px solid transparent;
-      background: linear-gradient(var(--navy), var(--navy)) padding-box, var(--grad) border-box;
-    }
-    .topbar-nav { display: flex; align-items: center; gap: 2rem; font-size: 0.9rem; font-family: 'Space Mono', monospace; }
-    .topbar-nav a { color: var(--muted); transition: color 0.2s; }
-    .topbar-nav a:hover { color: var(--white); }
-    .topbar-nav a.active { color: var(--white); }
-    .nav-donate {
-      background: var(--grad); -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;
-    }
+  a:focus-visible, button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px;}
 
-    /* ── Layout ── */
-    .page-content { position: relative; z-index: 1; }
-    section { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+  /* ── ambient dawn glow ── */
+  .glow{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .glow::before{
+    content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);
+    width:1200px;height:900px;
+    background:radial-gradient(ellipse at center, rgba(255,122,89,0.10) 0%, rgba(255,184,107,0.05) 35%, transparent 70%);
+  }
 
-    .section-tag {
-      font-family: 'Space Mono', monospace; font-size: 0.72rem;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--violet);
-      margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
-    }
-    .section-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--violet); }
+  /* ── topbar ── */
+  .topbar{position:sticky;top:0;z-index:100;backdrop-filter:blur(16px);background:rgba(26,16,35,0.7);border-bottom:1px solid var(--line);}
+  .topbar-inner{max-width:1120px;margin:0 auto;padding:0 2rem;height:76px;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:0.7rem;}
+  .mark{width:36px;height:36px;flex-shrink:0;}
+  .brand-name{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem;letter-spacing:0.01em;}
+  .topbar-nav{display:flex;align-items:center;gap:2.25rem;font-size:0.88rem;}
+  .topbar-nav a{color:var(--muted);transition:color 0.2s;}
+  .topbar-nav a:hover{color:var(--paper);}
+  .topbar-nav a.active{color:var(--paper);}
+  .nav-donate{
+    padding:0.55rem 1.3rem;border-radius:100px;border:1px solid rgba(255,184,107,0.4);
+    font-weight:500;color:var(--paper)!important;transition:all 0.2s;
+  }
+  .nav-donate:hover{background:var(--dawn);border-color:transparent;color:var(--ink)!important;}
 
-    /* ── Hero ── */
-    .about-hero { padding-top: 7rem; padding-bottom: 5rem; }
-    .about-hero h1 {
-      font-size: clamp(2.8rem, 5vw, 4rem);
-      font-weight: 700; letter-spacing: -0.02em; line-height: 1.05;
-      margin-bottom: 1rem;
-    }
-    .grad-text {
-      background: var(--grad); -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; background-clip: text;
-    }
+  /* ── layout ── */
+  .page-content{position:relative;z-index:1;}
+  section{max-width:1120px;margin:0 auto;padding:5.5rem 2rem;}
+  .section-tag{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--lavender);margin-bottom:1.1rem;display:flex;align-items:center;gap:0.5rem;}
+  .section-tag::before{content:'';width:20px;height:1px;background:var(--lavender);}
 
-    /* ── Story ── */
-    .story-grid {
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
-      gap: 4rem; align-items: start; margin-top: 2.5rem;
-    }
-    .story-lede {
-      font-size: 1.25rem; line-height: 1.65; font-weight: 300; color: var(--white);
-    }
-    .story-lede strong {
-      font-weight: 600; background: var(--grad);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .story-detail { display: flex; flex-direction: column; gap: 1.25rem; }
-    .story-detail p { font-size: 1rem; line-height: 1.7; color: var(--muted); font-weight: 300; margin: 0; }
+  /* ── hero / story ── */
+  .about-hero{padding-top:6.5rem;padding-bottom:4.5rem;}
+  .about-hero h1{font-size:clamp(2.6rem,4.6vw,3.9rem);line-height:1.08;margin-bottom:1.4rem;}
+  .story-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start;margin-top:2.2rem;}
+  .story-lede{font-family:'Fraunces',serif;font-size:1.4rem;line-height:1.55;font-weight:400;font-style:italic;color:var(--paper);}
+  .story-detail{display:flex;flex-direction:column;gap:1.1rem;}
+  .story-detail p{font-size:1rem;line-height:1.75;color:var(--muted);margin:0;}
 
-    /* ── Team ── */
-    .team-section { border-top: 1px solid var(--line); }
-    .team-section h2 {
-      font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700;
-      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.5rem;
-    }
-    .team-intro { color: var(--muted); font-size: 1rem; font-weight: 300; margin-bottom: 3rem; max-width: 500px; }
+  .divider{max-width:1120px;margin:0 auto;height:1px;background:var(--line);position:relative;z-index:1;}
 
-    .team-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    /* Last row: 2 cards — center them */
-    .team-grid .team-card:nth-child(4) { grid-column: 1; }
-    .team-grid .team-card:nth-child(5) { grid-column: 2; }
+  /* ── team ── */
+  .team-section{border-top:1px solid var(--line);}
+  .team-section h2{font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.15;margin-bottom:0.6rem;}
+  .team-intro{color:var(--muted);font-size:1rem;margin-bottom:3rem;max-width:520px;}
 
-    .team-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    }
-    .team-card:hover {
-      border-color: rgba(155,77,255,0.5);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(123,53,232,0.18);
-    }
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+  .team-grid .team-card:nth-child(4){grid-column:1;}
+  .team-grid .team-card:nth-child(5){grid-column:2;}
 
-    .team-avatar-wrap {
-      position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden;
-    }
-    .team-avatar {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: grayscale(60%) brightness(0.85);
-      transition: filter 0.4s ease, transform 0.4s ease;
-    }
-    .team-card:hover .team-avatar {
-      filter: grayscale(0%) brightness(1);
-      transform: scale(1.04);
-    }
-    .avatar-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(8,11,26,0.7) 0%, transparent 50%);
-      pointer-events: none;
-    }
+  .team-card{
+    background:rgba(251,243,236,0.03);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column;transition:border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .team-card:hover{
+    border-color:rgba(255,184,107,0.4);
+    transform:translateY(-4px);
+    box-shadow:0 20px 50px rgba(26,16,35,0.4);
+  }
 
-    .team-body { padding: 1.25rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
-    .team-name { font-size: 1.05rem; font-weight: 600; color: var(--white); }
-    .team-role {
-      font-family: 'Space Mono', monospace; font-size: 0.7rem;
-      text-transform: uppercase; letter-spacing: 0.06em;
-      background: var(--grad); -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 0.5rem;
-    }
-    .team-bio {
-      font-size: 0.875rem; line-height: 1.6; color: var(--muted);
-      font-weight: 300; flex: 1;
-    }
+  .team-avatar-wrap{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--ink-2);}
+  .team-avatar{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(55%) brightness(0.88) sepia(8%);
+    transition:filter 0.4s ease, transform 0.4s ease;
+  }
+  .team-card:hover .team-avatar{filter:grayscale(0%) brightness(1) sepia(0%);transform:scale(1.04);}
+  .avatar-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(26,16,35,0.75) 0%, transparent 50%);pointer-events:none;}
 
-    /* ── Divider ── */
-    .divider { max-width: 1100px; margin: 0 auto; height: 1px; background: var(--line); position: relative; z-index: 1; }
+  .team-body{padding:1.3rem 1.5rem 1.6rem;flex:1;display:flex;flex-direction:column;gap:0.4rem;}
+  .team-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:500;color:var(--paper);}
+  .team-role{
+    font-family:'IBM Plex Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.07em;
+    color:var(--gold);margin-bottom:0.5rem;
+  }
+  .team-bio{font-size:0.88rem;line-height:1.65;color:var(--muted);flex:1;}
 
-    /* ── Footer ── */
-    footer {
-      position: relative; z-index: 1;
-      border-top: 1px solid var(--line);
-      max-width: 1100px; margin: 0 auto; padding: 2rem 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: 0.85rem; color: var(--muted); font-family: 'Space Mono', monospace;
-    }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { transition: color 0.2s; }
-    .footer-links a:hover { color: var(--cyan); }
+  /* ── footer ── */
+  footer{
+    position:relative;z-index:1;border-top:1px solid var(--line);max-width:1120px;margin:0 auto;padding:2.2rem 2rem;
+    display:flex;align-items:center;justify-content:space-between;font-size:0.85rem;color:var(--muted);
+  }
+  .footer-links{display:flex;gap:1.6rem;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;}
+  .footer-links a{transition:color 0.2s;}
+  .footer-links a:hover{color:var(--gold);}
 
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      section { padding: 3.5rem 1.25rem; }
-      .about-hero { padding-top: 4rem; }
-      .story-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-      .team-grid .team-card:nth-child(4),
-      .team-grid .team-card:nth-child(5) { grid-column: 1; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
-    }
-  </style>
+  @media (max-width:840px){
+    section{padding:3.5rem 1.25rem;}
+    .about-hero{padding-top:3.5rem;}
+    .story-grid{grid-template-columns:1fr;gap:2rem;}
+    .team-grid{grid-template-columns:1fr;}
+    .team-grid .team-card:nth-child(4),
+    .team-grid .team-card:nth-child(5){grid-column:1;}
+    footer{flex-direction:column;gap:1rem;text-align:center;}
+    .topbar-nav{gap:1.2rem;font-size:0.82rem;}
+  }
+</style>
 </head>
 <body>
 
-  <div class="orbs" aria-hidden="true">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+<div class="glow" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="markGrad" x1="4" y1="34" x2="36" y2="6" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FF7A59"/>
+            <stop offset="55%" stop-color="#FFB86B"/>
+            <stop offset="100%" stop-color="#C9A6FF"/>
+          </linearGradient>
+        </defs>
+        <circle cx="20" cy="20" r="18" stroke="url(#markGrad)" stroke-width="1.4" opacity="0.5"/>
+        <path d="M8 24C12 12 28 12 32 24" stroke="url(#markGrad)" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="20" cy="17" r="3.2" fill="url(#markGrad)"/>
+      </svg>
+      <span class="brand-name">AURA</span>
+    </a>
+    <nav class="topbar-nav">
+      <a href="index.html#mission">Our Mission</a>
+      <a href="About Us.html" class="active">About Us</a>
+      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="nav-donate">Donate</a>
+    </nav>
   </div>
+</header>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a href="index.html"><img src="AURA Logo.png" alt="AURA Awareness" class="navbar-logo"></a>
-      <nav class="topbar-nav">
-        <a href="index.html#mission">Our Mission</a>
-        <a href="About Us.html" class="active">About Us</a>
-        <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="nav-donate">Donate →</a>
-      </nav>
+<div class="page-content">
+
+  <section class="about-hero" id="our-story">
+    <div class="section-tag">Behind the Signal</div>
+    <h1>Driven by purpose,<br>united for <span class="grad-text">impact.</span></h1>
+    <div class="story-grid">
+      <p class="story-lede">We are a group of students who believe actionable awareness shouldn't wait — because for most cancers, timing is everything.</p>
+      <div class="story-detail">
+        <p>AURA Awareness was formed out of a simple realization: while medical advancements continue to progress, accessible community fundraising can shift survival numbers right now.</p>
+        <p>By channeling resources directly into established organizations like the American Cancer Society, we keep our operations transparent, lean, and focused on one objective — empowering lives through early detection.</p>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <div class="page-content">
+  <div class="divider"></div>
 
-    <!-- Hero -->
-    <section class="about-hero" id="our-story">
-      <div class="section-tag">Behind the Signal</div>
-      <h1>Driven by purpose,<br>united for <span class="grad-text">impact.</span></h1>
-      <div class="story-grid">
-        <p class="story-lede">
-          We are a group of students who believe that <strong>actionable awareness shouldn't wait</strong> until it's too late because for most cancers, timing is everything.
-        </p>
-        <div class="story-detail">
-          <p>
-            AURA Awareness was formed out of a collective realization: while complex medical advancements continue to progress, basic accessible community fundraising can immediately shift survival numbers.
-          </p>
-          <p>
-            By channeling resources directly into established organizations like the American Cancer Society, we keep our operations transparent, lean, and intensely focused on the primary objective — empowering lives through early detection.
-          </p>
+  <section class="team-section" id="team">
+    <div class="section-tag">The Core Initiative</div>
+    <h2>The people keeping the<br><span class="grad-text">pulse alive</span></h2>
+    <p class="team-intro">Students from IMSA, UW-Madison, Case Western, and Georgia Tech. We are united by one mission.</p>
+
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-avatar-wrap">
+          <img src="Raj.jpg" alt="Raj Patel" class="team-avatar">
+          <div class="avatar-overlay"></div>
+        </div>
+        <div class="team-body">
+          <div class="team-name">Raj Patel</div>
+          <div class="team-role">Co-Founder · UW-Madison</div>
+          <p class="team-bio">An incoming freshman at UW-Madison and IMSA alumnus, Raj aims to become a physician at the intersection of neuroscience and computer science. Research at Northwestern and UIC gave him hands-on experience in the lab and a deep understanding of how disease impacts real people. This drove him to co-found AURA.</p>
         </div>
       </div>
-    </section>
 
-    <div class="divider"></div>
-
-    <!-- Team -->
-    <section class="team-section" id="team">
-      <div class="section-tag">The Core Initiative</div>
-      <h2>The people keeping the<br><span class="grad-text">pulse alive</span></h2>
-      <p class="team-intro">Students from IMSA, UW-Madison, Case Western, and Georgia Tech. We are united by one mission.</p>
-
-      <div class="team-grid">
-
-        <div class="team-card">
-          <div class="team-avatar-wrap">
-            <img src="Raj.jpg" alt="Raj Patel" class="team-avatar" >
-            <div class="avatar-overlay"></div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Raj Patel</div>
-            <div class="team-role">Co-Founder · UW-Madison</div>
-            <p class="team-bio">An incoming freshman at UW-Madison and IMSA alumnus, Raj aims to become a physician at the intersection of neuroscience and computer science. Research at Northwestern and UIC gave him hands-on experience in the lab and a deep understanding of how disease impacts real people. This drove him to co-found AURA.</p>
-          </div>
+      <div class="team-card">
+        <div class="team-avatar-wrap">
+          <img src="Aydin.jpg" alt="Aydin Syed" class="team-avatar">
+          <div class="avatar-overlay"></div>
         </div>
-
-        <div class="team-card">
-          <div class="team-avatar-wrap">
-            <img src="Aydin.jpg" alt="Aydin Syed" class="team-avatar">
-            <div class="avatar-overlay"></div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Aydin Syed</div>
-            <div class="team-role">Co-Founder · Case Western Reserve</div>
-            <p class="team-bio">Incoming freshman at Case Western and IMSA alumnus. Aydin's mother and aunt both survived breast cancer thanks to early detection. That personal experience is what sparked AURA. He previously raised $1,500 for pediatric cancer research as a kid, and he's not done yet.</p>
-          </div>
+        <div class="team-body">
+          <div class="team-name">Aydin Syed</div>
+          <div class="team-role">Co-Founder · Case Western Reserve</div>
+          <p class="team-bio">Incoming freshman at Case Western and IMSA alumnus. Aydin's mother and aunt both survived breast cancer thanks to early detection. That personal experience is what sparked AURA. He previously raised $1,500 for pediatric cancer research as a kid, and he's not done yet.</p>
         </div>
-
-        <div class="team-card">
-          <div class="team-avatar-wrap">
-            <img src="Krish.jpg" alt="Krish Sav" class="team-avatar">
-            <div class="avatar-overlay"></div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Krish Sav</div>
-            <div class="team-role">Vice President · IMSA</div>
-            <p class="team-bio">Rising senior at IMSA pursuing neurosurgery and a PhD. Krish co-developed a project achieving 98.2% accuracy in diagnosing brain tumors from MRI scans. His research in oncology and neurology fuels his commitment to equitable access to early detection for underserved communities.</p>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-avatar-wrap">
-            <img src="Max.jpeg" alt="Max Ballesteros" class="team-avatar">
-            <div class="avatar-overlay"></div>
-          </div>
-          <div class="team-body">
-            <div class="team-name">Maximiliano Ballesteros</div>
-            <div class="team-role">Art Head · IMSA</div>
-            <p class="team-bio">I’m Maximiliano Ballesteros, the artist behind the art prints. I am a senior at Illinois math and science academy. I have been drawing ever since I lost my ability to eat, which has motivated me to help raise money for cancer patients. Because of people’s kindness, I realize that this is my way of returning that favor.</p>
-          </div>
-        </div>
-
       </div>
-    </section>
 
-  </div>
+      <div class="team-card">
+        <div class="team-avatar-wrap">
+          <img src="Krish.jpg" alt="Krish Sav" class="team-avatar">
+          <div class="avatar-overlay"></div>
+        </div>
+        <div class="team-body">
+          <div class="team-name">Krish Sav</div>
+          <div class="team-role">Vice President · IMSA</div>
+          <p class="team-bio">Rising senior at IMSA pursuing neurosurgery and a PhD. Krish co-developed a project achieving 98.2% accuracy in diagnosing brain tumors from MRI scans. His research in oncology and neurology fuels his commitment to equitable access to early detection for underserved communities.</p>
+        </div>
+      </div>
 
-  <footer>
-    <span>© 2026 AURA Awareness</span>
-    <div class="footer-links">
-      <a href="index.html#mission">Mission</a>
-      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early">Donate</a>
-      <a href="#our-story">Back to top</a>
+      <div class="team-card">
+        <div class="team-avatar-wrap">
+          <img src="Max.jpeg" alt="Max Ballesteros" class="team-avatar">
+          <div class="avatar-overlay"></div>
+        </div>
+        <div class="team-body">
+          <div class="team-name">Maximiliano Ballesteros</div>
+          <div class="team-role">Art Head · IMSA</div>
+          <p class="team-bio">I'm Maximiliano Ballesteros, the artist behind the art prints. I am a senior at Illinois Math and Science Academy. I have been drawing ever since I lost my ability to eat, which has motivated me to help raise money for cancer patients. Because of people's kindness, I realize that this is my way of returning that favor.</p>
+        </div>
+      </div>
+
     </div>
-  </footer>
+  </section>
+
+</div>
+
+<footer>
+  <span class="mono">© 2026 AURA Awareness</span>
+  <div class="footer-links">
+    <a href="index.html#mission">Mission</a>
+    <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early">Donate</a>
+    <a href="#our-story">Back to top</a>
+  </div>
+</footer>
 
 </body>
 </html>
