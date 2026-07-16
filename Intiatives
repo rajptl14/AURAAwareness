@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Initiatives — AURA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14141c;
+    --ink-soft:#3d3c46;
+    --paper:#ffffff;
+    --surface:#f5f4f1;
+    --pink:#c31760;
+    --pink-deep:#9c1250;
+    --pink-tint:#fbeaf0;
+    --blue:#0b6f96;
+    --blue-deep:#08536f;
+    --blue-tint:#e9f2f5;
+    --border:#e3e1dc;
+    --border-soft:rgba(20,20,28,0.09);
+    --muted:#66646f;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .label{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.09em;
+    text-transform:uppercase; color:var(--muted);
+    display:flex; align-items:center; gap:9px;
+  }
+  .label::before{content:"";width:16px;height:1.5px;background:var(--pink);}
+  a{color:inherit;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.95);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif; font-weight:700; font-size:1.22rem;
+  }
+  .logo-mark{width:24px;height:24px;flex:none;}
+  .navlinks{display:flex; gap:34px; align-items:center; font-size:0.9rem; font-weight:600;}
+  .navlinks a{text-decoration:none; color:var(--ink-soft); transition:color .15s;}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks .cta{
+    background:var(--ink); color:var(--paper);
+    padding:10px 20px; border-radius:6px;
+  }
+  .navlinks .cta:hover{background:var(--pink-deep); color:#fff;}
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:84px 0 56px; border-bottom:1px solid var(--border); }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{order:-1; height:200px; max-width:200px; margin:0 auto;}
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.4vw, 3.6rem);
+    line-height:1.08;
+    margin-top:18px;
+  }
+  .hero h1 .accent{ color:var(--pink); }
+  .hero p.lead{
+    margin-top:22px; max-width:460px;
+    font-size:1.05rem; line-height:1.65; color:var(--ink-soft);
+  }
+  .hero-ctas{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 24px; border-radius:6px;
+    font-weight:700; font-size:0.92rem; text-decoration:none;
+    border:1px solid transparent; transition:background .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-primary:hover{ background:var(--pink-deep); }
+  .btn-ghost{ border-color:var(--border); color:var(--ink); background:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+
+  .hero-art{position:relative; height:340px;}
+  .hero-art svg{width:100%; height:100%;}
+
+  .stat-strip{
+    border-bottom:1px solid var(--border);
+    padding:22px 0;
+    background:var(--surface);
+  }
+  .stat-strip .wrap{
+    display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .stat-strip .item{font-size:0.82rem; color:var(--muted); font-weight:600;}
+  .stat-strip .item b{color:var(--ink); font-weight:700; margin-right:6px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative;}
+  .section-inner{padding:92px 0;}
+  .sec-white{ background:var(--paper); }
+  .sec-surface{ background:var(--surface); }
+  .sec-border-t{ border-top:1px solid var(--border); }
+
+  .grid-2{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;
+  }
+  @media (max-width:840px){ .grid-2{grid-template-columns:1fr; gap:36px;} }
+  .sec-heading{ font-size:clamp(1.9rem,3vw,2.6rem); line-height:1.14; margin-top:16px; }
+  .body-copy{ color:var(--ink-soft); font-size:1.02rem; line-height:1.75; }
+  .body-copy + .body-copy{ margin-top:16px; }
+
+  .fact-cards{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:480px){ .fact-cards{grid-template-columns:1fr;} }
+  .fact-card{
+    background:var(--paper); border:1px solid var(--border);
+    border-radius:10px; padding:24px 22px;
+  }
+  .fact-card .num{
+    font-family:'Fraunces',serif; font-size:2.3rem; font-weight:600; color:var(--ink);
+    line-height:1;
+  }
+  .fact-card .num small{ font-size:1.1rem; color:var(--pink); }
+  .fact-card .label-sm{ margin-top:9px; font-size:0.85rem; color:var(--muted); line-height:1.5;}
+  .fact-card .src{ margin-top:9px; font-size:0.7rem; color:var(--muted); }
+
+  /* ----- PROGRESS ----- */
+  .progress-card{
+    background:var(--paper); border:1px solid var(--border);
+    border-radius:12px; padding:40px;
+  }
+  @media (max-width:640px){ .progress-card{padding:28px 22px;} }
+  .progress-top{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px;}
+  .progress-top .amt{ font-family:'Fraunces',serif; font-size:2.4rem; font-weight:600;}
+  .progress-top .goal{ color:var(--muted); font-size:0.92rem; }
+  .bar-track{
+    margin-top:20px; height:10px; border-radius:100px;
+    background:var(--surface); overflow:hidden; border:1px solid var(--border);
+  }
+  .bar-fill{
+    height:100%; border-radius:100px;
+    background:var(--blue);
+    width:50%;
+  }
+  .progress-note{ margin-top:16px; font-size:0.94rem; color:var(--muted); line-height:1.6; max-width:540px;}
+  .path-steps{
+    margin-top:52px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  }
+  @media (max-width:780px){ .path-steps{grid-template-columns:1fr;} }
+  .path-step{
+    border-top:2px solid var(--blue);
+    padding-top:18px;
+  }
+  .path-step .step-label{ font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue-deep); }
+  .path-step h3{ font-size:1.15rem; margin-top:10px; }
+  .path-step p{ margin-top:9px; font-size:0.92rem; color:var(--muted); line-height:1.6;}
+
+  /* ----- TRANSPARENCY / LIST ROWS ----- */
+  .list-head{ max-width:580px; }
+  .t-list{ margin-top:52px; display:flex; flex-direction:column; }
+  .t-row{
+    display:grid; grid-template-columns:56px 1fr; gap:26px;
+    padding:32px 0; border-top:1px solid var(--border);
+    align-items:start;
+  }
+  .t-row:last-child{ border-bottom:1px solid var(--border); }
+  .t-row .idx{
+    font-family:'Fraunces',serif; font-size:1.4rem; color:var(--pink); font-weight:600;
+  }
+  .t-row h3{ font-size:1.2rem; }
+  .t-row p{ margin-top:9px; color:var(--muted); font-size:0.95rem; line-height:1.65; max-width:600px;}
+
+  /* ----- CTA ----- */
+  .sec-cta{
+    background:var(--ink); color:var(--paper);
+    text-align:center;
+  }
+  .sec-cta .section-inner{ padding:110px 0; }
+  .sec-cta .label{ justify-content:center; color:#b8b6bf; }
+  .sec-cta .label::before{ background:var(--pink); }
+  .sec-cta h2{
+    font-size:clamp(2rem,4.4vw,3.1rem);
+    max-width:680px; margin:20px auto 0;
+    line-height:1.14; color:#fff;
+  }
+  .sec-cta p{ margin:18px auto 0; max-width:480px; color:#b8b6bf; font-size:1.02rem; line-height:1.7;}
+  .sec-cta .hero-ctas{ justify-content:center; margin-top:34px;}
+  .sec-cta .btn-primary{ background:var(--pink); color:#fff; }
+  .sec-cta .btn-primary:hover{ background:var(--pink-deep); }
+  .sec-cta .btn-ghost{ border-color:rgba(255,255,255,0.28); color:#fff; background:transparent;}
+  .sec-cta .btn-ghost:hover{ border-color:#fff; }
+
+  footer{
+    background:var(--ink); color:#94929c;
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:28px 0; font-size:0.84rem; flex-wrap:wrap; gap:14px;
+  }
+  footer a{ text-decoration:none; color:#c2c0c9; margin-left:22px;}
+  footer a:hover{ color:#fff; }
+
+  .init-card{
+    background:var(--paper); border:1px solid var(--border); border-radius:12px;
+    padding:32px; margin-top:20px;
+  }
+  .init-card .init-num{ font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--pink); }
+  .init-card h3{ font-size:1.45rem; margin-top:10px; }
+  .init-card p{ margin-top:12px; color:var(--muted); font-size:0.96rem; line-height:1.7; max-width:640px;}
+  .init-stats{ display:flex; gap:32px; margin-top:20px; flex-wrap:wrap; }
+  .init-stats div b{ font-family:'Fraunces',serif; font-size:1.4rem; display:block; color:var(--ink);}
+  .init-stats div span{ font-size:0.78rem; color:var(--muted); }
+</style>
+
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="15" stroke="#0b6f96" stroke-width="4" fill="none"/>
+        <circle cx="20" cy="20" r="7" fill="#c31760"/>
+      </svg>
+      AURA
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="index.html#progress">Progress</a>
+      <a class="cta" href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" style="padding-bottom:56px;">
+  <div class="wrap" style="grid-template-columns:1fr; max-width:760px;">
+    <div>
+      <div class="label">Our Initiatives</div>
+      <h1>Three ways we <span class="accent">close the gap.</span></h1>
+      <p class="lead" style="max-width:600px;">Every program below exists to move someone from "I should get that checked" to actually getting checked — and to support them if the answer isn't what they hoped.</p>
+    </div>
+  </div>
+</section>
+
+<div class="stat-strip">
+  <div class="wrap">
+    <div class="item"><b>3</b>active initiatives this year</div>
+    <div class="item"><b>140+</b>screenings supported to date</div>
+    <div class="item"><b>100%</b>of program funding via ACS partnership</div>
+  </div>
+</div>
+
+<section id="access" class="sec-white sec-border-t">
+  <div class="wrap section-inner">
+    <div class="label">Initiative 01</div>
+    <div class="init-card">
+      <div class="init-num">Screening Access Fund</div>
+      <h3>Getting people to the appointment, not just aware of it.</h3>
+      <p>We cover the costs that quietly stop people from screening — copays, transportation, and paid time off for hourly workers. Requests go through a partner clinic, so funds move directly to the barrier, not around it.</p>
+      <div class="init-stats">
+        <div><b>62</b><span>Rides &amp; copays funded</span></div>
+        <div><b>4</b><span>Partner clinics</span></div>
+        <div><b>$18k</b><span>Directed to access this year</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="sec-surface sec-border-t">
+  <div class="wrap section-inner">
+    <div class="label">Initiative 02</div>
+    <h2 class="sec-heading" style="max-width:640px;">Community Education Workshops</h2>
+    <p class="progress-note" style="margin-top:14px; max-width:640px;">Free evening sessions, run with local clinics, that cover what symptoms actually warrant a visit — and unlearn the idea that screening is only for people who are already worried.</p>
+    <div class="path-steps">
+      <div class="path-step">
+        <div class="step-label">Workshop A</div>
+        <h3>Know your baseline</h3>
+        <p>What's normal for your body, and what change is actually worth mentioning to a doctor.</p>
+      </div>
+      <div class="path-step">
+        <div class="step-label">Workshop B</div>
+        <h3>Navigating insurance</h3>
+        <p>A plain-language walkthrough of what screenings are typically covered, and how to ask.</p>
+      </div>
+      <div class="path-step">
+        <div class="step-label">Workshop C</div>
+        <h3>Talking to family</h3>
+        <p>How to raise screening with a parent or partner who's avoiding the conversation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="support" class="sec-white sec-border-t">
+  <div class="wrap section-inner">
+    <div class="list-head">
+      <div class="label">Initiative 03</div>
+      <h2 class="sec-heading">Survivor Support Network</h2>
+    </div>
+    <div class="t-list">
+      <div class="t-row">
+        <div class="idx">01</div>
+        <div>
+          <h3>Peer matching</h3>
+          <p>New patients are matched, if they want, with a local survivor who's been through a similar diagnosis.</p>
+        </div>
+      </div>
+      <div class="t-row">
+        <div class="idx">02</div>
+        <div>
+          <h3>Monthly meetups</h3>
+          <p>An open, no-pressure gathering for patients, survivors, and caregivers to talk with people who understand.</p>
+        </div>
+      </div>
+      <div class="t-row">
+        <div class="idx">03</div>
+        <div>
+          <h3>Practical help fund</h3>
+          <p>Small grants for the unglamorous costs of treatment — parking, childcare, meals during chemo weeks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-cta">
+  <div class="wrap section-inner">
+    <div class="label">Fund The Next One</div>
+    <h2>These programs run on community dollars.</h2>
+    <p>A donation today goes straight into whichever initiative needs it most this month.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener">Donate on GoFundMe</a>
+      <a class="btn btn-ghost" href="about.html">Read our story</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 AURA Awareness</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
