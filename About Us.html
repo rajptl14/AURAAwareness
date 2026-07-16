@@ -55,28 +55,75 @@
   @media (max-width:640px){ .wrap{padding:0 20px;} }
 
   /* ---------- NAV ---------- */
-  nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(255,255,255,0.95);
-    border-bottom:1px solid var(--border);
-  }
-  nav .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:72px;
-  }
-  .logo{
-    display:flex; align-items:center; gap:10px;
-    font-family:'Fraunces',serif; font-weight:700; font-size:1.22rem;
-  }
-  .logo-mark{width:24px;height:24px;flex:none;}
-  .navlinks{display:flex; gap:34px; align-items:center; font-size:0.9rem; font-weight:600;}
-  .navlinks a{text-decoration:none; color:var(--ink-soft); transition:color .15s;}
-  .navlinks a:hover{color:var(--ink);}
-  .navlinks .cta{
-    background:var(--ink); color:var(--paper);
-    padding:10px 20px; border-radius:6px;
-  }
-  .navlinks .cta:hover{background:var(--pink-deep); color:#fff;}
+/* ---------- NAV ---------- */
+nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+
+nav .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:76px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:1.3rem;
+  color:var(--ink);
+}
+
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  font-size:0.9rem;
+  font-weight:600;
+}
+
+.navlinks a{
+  text-decoration:none;
+  color:var(--ink-soft);
+  transition:all .15s ease;
+}
+
+.navlinks a:hover{
+  color:var(--pink);
+}
+
+/* Social icons */
+.navlinks i{
+  font-size:1.15rem;
+  color:var(--ink-soft);
+  transition:color .15s ease;
+}
+
+.navlinks i:hover{
+  color:var(--pink);
+}
+
+/* Donate button */
+.navlinks .cta{
+  background:var(--ink);
+  color:white;
+  padding:11px 22px;
+  border-radius:8px;
+  margin-left:4px;
+}
+
+.navlinks .cta:hover{
+  background:var(--pink-deep);
+  color:white;
+}
 
   /* ---------- HERO ---------- */
   .hero{ padding:84px 0 56px; border-bottom:1px solid var(--border); }
@@ -290,11 +337,9 @@
 <nav>
   <div class="wrap">
     <div class="logo">
-      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="15" stroke="#0b6f96" stroke-width="4" fill="none"/>
-        <circle cx="20" cy="20" r="7" fill="#c31760"/>
-      </svg>
-      AURA
+       <div class="logo">
+      <img src="aura-logo.png" alt="AURA Awareness Logo" class="logo-img">
+    </div>
     </div>
     <div class="navlinks">
       <a href="index.html">Home</a>
