@@ -2,7 +2,7 @@
 
 # AURA Awareness
 
-Advocating for Alzheimer's awareness through education, outreach, and fundraising.
+Advocating for Cancer awareness through education, outreach, and fundraising.
 
 ## Mission
 Increasing public understanding of Alzheimer's disease and the importance of early detection.
