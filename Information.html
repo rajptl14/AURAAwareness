@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="Favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn — AURA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  :root{
+    --ink:#14141c;
+    --ink-soft:#3d3c46;
+    --paper:#ffffff;
+    --surface:#f5f4f1;
+    --pink:#c31760;
+    --pink-deep:#9c1250;
+    --pink-tint:#fbeaf0;
+    --blue:#0b6f96;
+    --blue-deep:#08536f;
+    --blue-tint:#e9f2f5;
+    --border:#e3e1dc;
+    --border-soft:rgba(20,20,28,0.09);
+    --muted:#66646f;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .label{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.09em;
+    text-transform:uppercase; color:var(--muted);
+    display:flex; align-items:center; gap:9px;
+  }
+  .label::before{content:"";width:16px;height:1.5px;background:var(--pink);}
+  a{color:inherit;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,0.96);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .logo-img{
+    width:150px;
+    height:150px;
+    object-fit:contain;
+    flex:none;
+  }
+  .navlinks{
+    display:flex;
+    align-items:center;
+    gap:26px;
+    font-size:0.9rem;
+    font-weight:600;
+  }
+  .navlinks a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    transition:all .15s ease;
+  }
+  .navlinks a:hover{ color:var(--pink); }
+  .navlinks i{
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    transition:color .15s ease;
+  }
+  .navlinks i:hover{ color:var(--pink); }
+  .navlinks .cta{
+    background:var(--ink);
+    color:white;
+    padding:11px 22px;
+    border-radius:8px;
+    margin-left:4px;
+  }
+  .navlinks .cta:hover{
+    background:var(--pink-deep);
+    color:white;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:84px 0 56px; border-bottom:1px solid var(--border); }
+  .hero .wrap{ max-width:760px; }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.4vw, 3.6rem);
+    line-height:1.08;
+    margin-top:18px;
+  }
+  .hero h1 .accent{ color:var(--pink); }
+  .hero p.lead{
+    margin-top:22px; max-width:560px;
+    font-size:1.05rem; line-height:1.65; color:var(--ink-soft);
+  }
+  .hero-ctas{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 24px; border-radius:6px;
+    font-weight:700; font-size:0.92rem; text-decoration:none;
+    border:1px solid transparent; transition:background .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-primary:hover{ background:var(--pink-deep); }
+  .btn-ghost{ border-color:var(--border); color:var(--ink); background:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+
+  .disclaimer-strip{
+    border-bottom:1px solid var(--border);
+    padding:16px 0;
+    background:var(--blue-tint);
+  }
+  .disclaimer-strip .wrap{
+    display:flex; align-items:center; gap:10px;
+    font-size:0.82rem; color:var(--blue-deep); font-weight:600;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative;}
+  .section-inner{padding:92px 0;}
+  .sec-white{ background:var(--paper); }
+  .sec-surface{ background:var(--surface); }
+  .sec-border-t{ border-top:1px solid var(--border); }
+  .sec-heading{ font-size:clamp(1.9rem,3vw,2.6rem); line-height:1.14; margin-top:16px; }
+  .body-copy{ color:var(--ink-soft); font-size:1.02rem; line-height:1.75; max-width:640px; }
+
+  .grid-2{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;
+  }
+  @media (max-width:840px){ .grid-2{grid-template-columns:1fr; gap:36px;} }
+
+  /* ----- FACT CARDS ----- */
+  .fact-cards{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:480px){ .fact-cards{grid-template-columns:1fr;} }
+  .fact-card{
+    background:var(--paper); border:1px solid var(--border);
+    border-radius:10px; padding:24px 22px;
+  }
+  .fact-card .num{
+    font-family:'Fraunces',serif; font-size:2.3rem; font-weight:600; color:var(--ink);
+    line-height:1;
+  }
+  .fact-card .num small{ font-size:1.1rem; color:var(--pink); }
+  .fact-card .label-sm{ margin-top:9px; font-size:0.85rem; color:var(--muted); line-height:1.5;}
+  .fact-card .src{ margin-top:9px; font-size:0.7rem; color:var(--muted); }
+
+  /* ----- SIGNS LIST ----- */
+  .t-list{ margin-top:52px; display:flex; flex-direction:column; }
+  .t-row{
+    display:grid; grid-template-columns:56px 1fr; gap:26px;
+    padding:32px 0; border-top:1px solid var(--border);
+    align-items:start;
+  }
+  .t-row:last-child{ border-bottom:1px solid var(--border); }
+  .t-row .idx{
+    font-family:'Fraunces',serif; font-size:1.4rem; color:var(--pink); font-weight:600;
+  }
+  .t-row h3{ font-size:1.2rem; }
+  .t-row p{ margin-top:9px; color:var(--muted); font-size:0.95rem; line-height:1.65; max-width:600px;}
+
+  /* ----- SCREENING GRID ----- */
+  .screen-grid{
+    margin-top:48px; display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  @media (max-width:780px){ .screen-grid{grid-template-columns:1fr;} }
+  .screen-card{
+    background:var(--paper); border:1px solid var(--border); border-radius:10px;
+    padding:26px 24px;
+  }
+  .screen-card .idx-sm{ font-family:'Fraunces',serif; font-size:1.2rem; color:var(--blue-deep); font-weight:600; }
+  .screen-card h3{ font-size:1.05rem; margin-top:12px; }
+  .screen-card p{ margin-top:9px; font-size:0.88rem; color:var(--muted); line-height:1.6;}
+
+  /* ----- RESOURCE LINKS ----- */
+  .resource-list{ margin-top:44px; display:flex; flex-direction:column; gap:14px; max-width:640px; }
+  .resource-link{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:18px 22px; border:1px solid var(--border); border-radius:10px;
+    text-decoration:none; background:var(--paper); transition:border-color .15s ease;
+  }
+  .resource-link:hover{ border-color:var(--ink); }
+  .resource-link .name{ font-weight:700; color:var(--ink); font-size:0.95rem; }
+  .resource-link .desc{ font-size:0.82rem; color:var(--muted); margin-top:3px; }
+  .resource-link i{ color:var(--muted); flex:none; }
+
+  /* ----- CTA ----- */
+  .sec-cta{
+    background:var(--ink); color:var(--paper);
+    text-align:center;
+  }
+  .sec-cta .section-inner{ padding:110px 0; }
+  .sec-cta .label{ justify-content:center; color:#b8b6bf; }
+  .sec-cta .label::before{ background:var(--pink); }
+  .sec-cta h2{
+    font-size:clamp(2rem,4.4vw,3.1rem);
+    max-width:680px; margin:20px auto 0;
+    line-height:1.14; color:#fff;
+  }
+  .sec-cta p{ margin:18px auto 0; max-width:480px; color:#b8b6bf; font-size:1.02rem; line-height:1.7;}
+  .sec-cta .hero-ctas{ justify-content:center; margin-top:34px;}
+  .sec-cta .btn-primary{ background:var(--pink); color:#fff; }
+  .sec-cta .btn-primary:hover{ background:var(--pink-deep); }
+  .sec-cta .btn-ghost{ border-color:rgba(255,255,255,0.28); color:#fff; background:transparent;}
+  .sec-cta .btn-ghost:hover{ border-color:#fff; }
+
+  footer{
+    background:var(--ink); color:#94929c;
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:28px 0; font-size:0.84rem; flex-wrap:wrap; gap:14px;
+  }
+  footer a{ text-decoration:none; color:#c2c0c9; margin-left:22px;}
+  footer a:hover{ color:#fff; }
+
+  /* ----- CLICKABLE CARDS ----- */
+  .t-row, .screen-card{ cursor:pointer; transition:border-color .15s ease, background .15s ease; }
+  .t-row:hover{ background:var(--surface); }
+  .screen-card:hover{ border-color:var(--ink); }
+  .t-row .more, .screen-card .more{
+    display:inline-flex; align-items:center; gap:6px;
+    margin-top:10px; font-size:0.78rem; font-weight:700;
+    color:var(--blue-deep);
+  }
+
+  /* ----- MODAL ----- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(20,20,28,0.55);
+    display:none; align-items:center; justify-content:center;
+    padding:24px; z-index:100;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{
+    background:var(--paper); border-radius:14px; max-width:520px; width:100%;
+    padding:36px; position:relative; max-height:85vh; overflow-y:auto;
+  }
+  .modal-close{
+    position:absolute; top:20px; right:20px; width:34px; height:34px;
+    border-radius:50%; border:1px solid var(--border); background:var(--paper);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    color:var(--muted); font-size:0.95rem;
+  }
+  .modal-close:hover{ border-color:var(--ink); color:var(--ink); }
+  .modal-label{ font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--pink); }
+  .modal-title{ font-family:'Fraunces',serif; font-size:1.5rem; font-weight:600; margin-top:12px; color:var(--ink); }
+  .modal-body{ margin-top:16px; font-size:0.96rem; color:var(--ink-soft); line-height:1.7; }
+  .modal-body p + p{ margin-top:12px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">
+      <img src="aura-logo.png" alt="AURA Awareness Logo" class="logo-img">
+    </div>
+    <div class="navlinks">
+      <a href="About Us.html">About</a>
+      <a href="Intiatives.html">Initiatives</a>
+      <a href="information.html">Learn</a>
+      <a href="impact.html">Impact</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="chapters.html">Chapters</a>
+
+      <a href="https://www.instagram.com/aura.awareness/" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/@AURA-u1m7b" target="_blank" rel="noopener" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+      <a href="https://www.linkedin.com/company/awareness-and-urgent-risk-assessment/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+
+      <a class="cta" href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="label">Learn</div>
+    <h1>Know the signs. <span class="accent">Act on them.</span></h1>
+    <p class="lead">Early detection saves lives — but only if people know what to look for and where to go. Here's a plain-language starting point on cancer risk, warning signs, and screening.</p>
+  </div>
+</section>
+
+<div class="disclaimer-strip">
+  <div class="wrap">
+    <i class="fa-solid fa-circle-info"></i>
+    This page is for general awareness only and isn't medical advice. Always talk to a doctor about your personal risk and screening schedule.
+  </div>
+</div>
+
+<section id="why-early" class="sec-white sec-border-t">
+  <div class="wrap section-inner">
+    <div class="grid-2">
+      <div>
+        <div class="label">Why Early Detection Matters</div>
+        <h2 class="sec-heading">Timing changes outcomes more than almost anything else.</h2>
+      </div>
+      <div>
+        <p class="body-copy">Cancer caught in its earliest stages, before it has spread, is generally far easier to treat and far more survivable. The challenge is that early stages often come with few or no symptoms — which is exactly why awareness and routine screening matter so much.</p>
+        <div class="fact-cards" style="margin-top:28px;">
+          <div class="fact-card">
+            <div class="num">90<small>%</small></div>
+            <div class="label-sm">5-year survival rate when cancer is caught early</div>
+            <div class="src">— American Cancer Society</div>
+          </div>
+          <div class="fact-card">
+            <div class="num">1<small>in 2</small></div>
+            <div class="label-sm">Men and women who will be diagnosed with cancer in their lifetime</div>
+            <div class="src">— American Cancer Society</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="signs" class="sec-surface sec-border-t">
+  <div class="wrap section-inner">
+    <div class="label">Warning Signs</div>
+    <h2 class="sec-heading" style="max-width:640px;">Changes worth paying attention to.</h2>
+    <p class="body-copy" style="margin-top:16px;">None of these mean cancer on their own — but any of them, especially if new or persistent, are worth mentioning to a doctor.</p>
+
+    <div class="t-list">
+      <div class="t-row" onclick="openModal('sign-1')">
+        <div class="idx">01</div>
+        <div>
+          <h3>Unexplained lumps or swelling</h3>
+          <p>Any new lump, thickening, or swelling that doesn't go away, especially if it's growing or firm to the touch.</p>
+          <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+      <div class="t-row" onclick="openModal('sign-2')">
+        <div class="idx">02</div>
+        <div>
+          <h3>Unexplained weight loss</h3>
+          <p>Losing a noticeable amount of weight without changes to diet or activity level.</p>
+          <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+      <div class="t-row" onclick="openModal('sign-3')">
+        <div class="idx">03</div>
+        <div>
+          <h3>Persistent fatigue</h3>
+          <p>Tiredness that doesn't improve with rest and interferes with daily activities over weeks.</p>
+          <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+      <div class="t-row" onclick="openModal('sign-4')">
+        <div class="idx">04</div>
+        <div>
+          <h3>Changes in skin</h3>
+          <p>New moles, or existing moles that change in size, shape, or color; sores that don't heal.</p>
+          <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+      <div class="t-row" onclick="openModal('sign-5')">
+        <div class="idx">05</div>
+        <div>
+          <h3>Persistent pain</h3>
+          <p>Pain that doesn't have a clear cause and doesn't go away after a few weeks.</p>
+          <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+      <div class="t-row" onclick="openModal('sign-6')">
+        <div class="idx">06</div>
+        <div>
+          <h3>Changes in bowel or bladder habits</h3>
+          <p>Ongoing changes in frequency, consistency, or noticeable blood.</p>
+          <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screening" class="sec-white sec-border-t">
+  <div class="wrap section-inner">
+    <div class="label">Screening Basics</div>
+    <h2 class="sec-heading" style="max-width:640px;">Routine checks catch what symptoms can't.</h2>
+    <p class="body-copy" style="margin-top:16px;">Screening guidelines vary by age, sex, and family history — talk to a doctor about what applies to you. These are some of the most common starting points.</p>
+
+    <div class="screen-grid">
+      <div class="screen-card" onclick="openModal('screen-1')">
+        <div class="idx-sm">01</div>
+        <h3>Breast cancer</h3>
+        <p>Mammograms are generally recommended starting around age 40–45, or earlier with family history.</p>
+        <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="screen-card" onclick="openModal('screen-2')">
+        <div class="idx-sm">02</div>
+        <h3>Colorectal cancer</h3>
+        <p>Screening, such as colonoscopy, is generally recommended starting around age 45.</p>
+        <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="screen-card" onclick="openModal('screen-3')">
+        <div class="idx-sm">03</div>
+        <h3>Cervical cancer</h3>
+        <p>Pap tests are generally recommended starting around age 21, on a regular schedule.</p>
+        <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="screen-card" onclick="openModal('screen-4')">
+        <div class="idx-sm">04</div>
+        <h3>Skin cancer</h3>
+        <p>Annual skin checks, plus self-exams for new or changing moles, at any age.</p>
+        <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="screen-card" onclick="openModal('screen-5')">
+        <div class="idx-sm">05</div>
+        <h3>Lung cancer</h3>
+        <p>Low-dose CT screening may be recommended for long-term smokers starting around age 50.</p>
+        <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="screen-card" onclick="openModal('screen-6')">
+        <div class="idx-sm">06</div>
+        <h3>Prostate cancer</h3>
+        <p>PSA testing is often discussed starting around age 50, or earlier with family history.</p>
+        <span class="more">Read more <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resources" class="sec-surface sec-border-t">
+  <div class="wrap section-inner">
+    <div class="label">Trusted Resources</div>
+    <h2 class="sec-heading" style="max-width:640px;">Where to go for more.</h2>
+    <p class="body-copy" style="margin-top:16px;">We're a fundraising and awareness organization, not a medical provider — for guidance specific to you, these are good places to start.</p>
+
+    <div class="resource-list">
+      <a class="resource-link" href="https://www.cancer.org" target="_blank" rel="noopener">
+        <div>
+          <div class="name">American Cancer Society</div>
+          <div class="desc">Research, screening guidelines, and support programs — where AURA's funds go.</div>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+      <a class="resource-link" href="https://www.cdc.gov/cancer/index.htm" target="_blank" rel="noopener">
+        <div>
+          <div class="name">CDC — Cancer</div>
+          <div class="desc">National data, prevention guidance, and screening resources.</div>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+      <a class="resource-link" href="https://www.nccn.org" target="_blank" rel="noopener">
+        <div>
+          <div class="name">National Comprehensive Cancer Network</div>
+          <div class="desc">Detailed, patient-friendly treatment and screening guidelines.</div>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec-cta">
+  <div class="wrap section-inner">
+    <div class="label">Take the Next Step</div>
+    <h2>Awareness is the first screening tool.</h2>
+    <p>If something on this page felt familiar, don't wait — talk to a doctor. And if you want to help others get there sooner, support our work.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener">Donate</a>
+      <a class="btn btn-ghost" href="volunteer.html">Volunteer with us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 AURA Awareness</div>
+    <div>
+      <a href="About Us.html">About</a>
+      <a href="Intiatives.html">Initiatives</a>
+      <a href="information.html">Learn</a>
+      <a href="impact.html">Impact</a>
+      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
+    <div class="modal-label" id="modal-label">Detail</div>
+    <div class="modal-title" id="modal-title">Title</div>
+    <div class="modal-body" id="modal-body"><p>Body</p></div>
+  </div>
+</div>
+
+<script>
+  const modalData = {
+    'sign-1': {
+      label: 'Warning Sign',
+      title: 'Unexplained lumps or swelling',
+      body: `<p>A new lump or area of swelling that appears without an obvious cause — like an injury or infection — is worth having checked, especially if it's firm, doesn't move easily under the skin, or keeps growing over a few weeks.</p><p>Most lumps turn out to be harmless (cysts, swollen lymph nodes from a minor illness), but a doctor is the only one who can tell the difference.</p>`
+    },
+    'sign-2': {
+      label: 'Warning Sign',
+      title: 'Unexplained weight loss',
+      body: `<p>Losing a significant amount of weight — generally more than 5% of body weight — without trying is one of the more commonly reported early symptoms across several cancer types.</p><p>It's easy to write off as stress or a busy season, which is exactly why it's worth mentioning at a checkup if it continues.</p>`
+    },
+    'sign-3': {
+      label: 'Warning Sign',
+      title: 'Persistent fatigue',
+      body: `<p>Everyone gets tired. The kind worth flagging is fatigue that doesn't improve with sleep or rest, and that starts getting in the way of normal activities over a period of weeks.</p><p>Fatigue is a very general symptom, so on its own it usually points to something else — but paired with other changes, it's worth raising with a doctor.</p>`
+    },
+    'sign-4': {
+      label: 'Warning Sign',
+      title: 'Changes in skin',
+      body: `<p>This includes new moles, existing moles that change in size, shape, color, or border, and sores or patches that don't heal within a few weeks.</p><p>A simple way to track this is the "ABCDE" rule for moles: Asymmetry, Border irregularity, Color variation, Diameter greater than a pencil eraser, and Evolving over time.</p>`
+    },
+    'sign-5': {
+      label: 'Warning Sign',
+      title: 'Persistent pain',
+      body: `<p>Pain that shows up without a clear cause — no injury, no strain — and sticks around for more than a few weeks deserves attention, particularly if it's in one consistent location.</p><p>This is one of the more commonly overlooked signs, since it's easy to attribute to normal aches.</p>`
+    },
+    'sign-6': {
+      label: 'Warning Sign',
+      title: 'Changes in bowel or bladder habits',
+      body: `<p>Ongoing changes in frequency, consistency, or the presence of blood are worth mentioning to a doctor, even if they feel minor or embarrassing to bring up.</p><p>These symptoms are often caused by far more common and treatable conditions — but ruling out something serious starts with getting checked.</p>`
+    },
+    'screen-1': {
+      label: 'Screening',
+      title: 'Breast cancer',
+      body: `<p>Mammograms are generally recommended starting around age 40–45 for those at average risk, continuing on a regular schedule after that.</p><p>Those with a family history or known genetic risk factors may be advised to start earlier — this is a conversation worth having directly with a doctor.</p>`
+    },
+    'screen-2': {
+      label: 'Screening',
+      title: 'Colorectal cancer',
+      body: `<p>Screening — most often colonoscopy, though other options exist — is generally recommended starting around age 45 for those at average risk.</p><p>Family history, inflammatory bowel disease, or certain genetic conditions can move that timeline earlier.</p>`
+    },
+    'screen-3': {
+      label: 'Screening',
+      title: 'Cervical cancer',
+      body: `<p>Pap tests are generally recommended starting around age 21, with HPV testing often added or used alongside it as guidelines have evolved.</p><p>Frequency typically depends on age and prior results — a doctor can lay out the right schedule.</p>`
+    },
+    'screen-4': {
+      label: 'Screening',
+      title: 'Skin cancer',
+      body: `<p>Unlike many cancers, skin cancer is often visible early — which makes both professional skin checks and monthly self-exams particularly effective.</p><p>Anyone with significant sun exposure history, many moles, or fair skin may benefit from more frequent checks.</p>`
+    },
+    'screen-5': {
+      label: 'Screening',
+      title: 'Lung cancer',
+      body: `<p>Low-dose CT screening may be recommended for long-term or heavy smokers, generally starting around age 50, depending on smoking history.</p><p>This is a more targeted screening than most on this list — it's worth asking a doctor whether your history qualifies.</p>`
+    },
+    'screen-6': {
+      label: 'Screening',
+      title: 'Prostate cancer',
+      body: `<p>PSA testing is often discussed starting around age 50 for those at average risk, or earlier for those with family history or certain risk factors.</p><p>Because PSA testing has both benefits and downsides, it's usually framed as a shared decision between patient and doctor rather than a default.</p>`
+    }
+  };
+
+  function openModal(key){
+    const data = modalData[key];
+    if(!data) return;
+    document.getElementById('modal-label').textContent = data.label;
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-body').innerHTML = data.body;
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+</script>
+
+</body>
+</html>
