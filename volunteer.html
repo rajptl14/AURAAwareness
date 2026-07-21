@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="Favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer — AURA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  :root{
+    --ink:#14141c;
+    --ink-soft:#3d3c46;
+    --paper:#ffffff;
+    --surface:#f5f4f1;
+    --pink:#c31760;
+    --pink-deep:#9c1250;
+    --pink-tint:#fbeaf0;
+    --blue:#0b6f96;
+    --blue-deep:#08536f;
+    --blue-tint:#e9f2f5;
+    --border:#e3e1dc;
+    --border-soft:rgba(20,20,28,0.09);
+    --muted:#66646f;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .label{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.09em;
+    text-transform:uppercase; color:var(--muted);
+    display:flex; align-items:center; gap:9px;
+  }
+  .label::before{content:"";width:16px;height:1.5px;background:var(--pink);}
+  a{color:inherit;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,0.96);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .logo-img{
+    width:150px;
+    height:150px;
+    object-fit:contain;
+    flex:none;
+  }
+  .navlinks{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    font-size:0.9rem;
+    font-weight:600;
+  }
+  .navlinks a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    transition:all .15s ease;
+  }
+  .navlinks a:hover{ color:var(--pink); }
+  .navlinks i{
+    font-size:1.15rem;
+    color:var(--ink-soft);
+    transition:color .15s ease;
+  }
+  .navlinks i:hover{ color:var(--pink); }
+  .navlinks .cta{
+    background:var(--ink);
+    color:white;
+    padding:11px 22px;
+    border-radius:8px;
+    margin-left:4px;
+  }
+  .navlinks .cta:hover{
+    background:var(--pink-deep);
+    color:white;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:84px 0 56px; border-bottom:1px solid var(--border); }
+  .hero .wrap{ max-width:760px; }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.4vw, 3.6rem);
+    line-height:1.08;
+    margin-top:18px;
+  }
+  .hero h1 .accent{ color:var(--pink); }
+  .hero p.lead{
+    margin-top:22px; max-width:560px;
+    font-size:1.05rem; line-height:1.65; color:var(--ink-soft);
+  }
+  .hero-ctas{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 24px; border-radius:6px;
+    font-weight:700; font-size:0.92rem; text-decoration:none;
+    border:1px solid transparent; transition:background .15s ease, border-color .15s ease, color .15s ease;
+  }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-primary:hover{ background:var(--pink-deep); }
+  .btn-ghost{ border-color:var(--border); color:var(--ink); background:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+
+  .stat-strip{
+    border-bottom:1px solid var(--border);
+    padding:22px 0;
+    background:var(--surface);
+  }
+  .stat-strip .wrap{
+    display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .stat-strip .item{font-size:0.82rem; color:var(--muted); font-weight:600;}
+  .stat-strip .item b{color:var(--ink); font-weight:700; margin-right:6px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative;}
+  .section-inner{padding:92px 0;}
+  .sec-white{ background:var(--paper); }
+  .sec-surface{ background:var(--surface); }
+  .sec-border-t{ border-top:1px solid var(--border); }
+  .sec-heading{ font-size:clamp(1.9rem,3vw,2.6rem); line-height:1.14; margin-top:16px; }
+  .body-copy{ color:var(--ink-soft); font-size:1.02rem; line-height:1.75; max-width:640px; }
+
+  /* ----- ROLE CARDS ----- */
+  .role-grid{
+    margin-top:48px; display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  @media (max-width:900px){ .role-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:640px){ .role-grid{grid-template-columns:1fr;} }
+  .role-card{
+    background:var(--paper); border:1px solid var(--border); border-radius:10px;
+    padding:28px 24px; display:flex; flex-direction:column;
+  }
+  .role-icon{
+    width:44px; height:44px; border-radius:9px;
+    background:var(--pink-tint); color:var(--pink-deep);
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  }
+  .role-card:nth-child(3n-1) .role-icon,
+  .role-card:nth-child(3n) .role-icon{
+    background:var(--blue-tint); color:var(--blue-deep);
+  }
+  .role-name{
+    font-family:'Fraunces',serif; font-size:1.12rem; font-weight:600; color:var(--ink);
+    margin-top:16px;
+  }
+  .role-desc{
+    margin-top:9px; font-size:0.9rem; color:var(--muted); line-height:1.65;
+  }
+  .role-tag{
+    margin-top:16px; font-size:0.72rem; font-weight:700; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--muted);
+  }
+
+  /* ----- STEPS ----- */
+  .path-steps{
+    margin-top:52px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  }
+  @media (max-width:780px){ .path-steps{grid-template-columns:1fr;} }
+  .path-step{
+    border-top:2px solid var(--blue);
+    padding-top:18px;
+  }
+  .path-step .step-label{ font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue-deep); }
+  .path-step h3{ font-size:1.15rem; margin-top:10px; }
+  .path-step p{ margin-top:9px; font-size:0.92rem; color:var(--muted); line-height:1.6;}
+
+  /* ----- FAQ ----- */
+  .t-list{ margin-top:52px; display:flex; flex-direction:column; }
+  .t-row{
+    display:grid; grid-template-columns:56px 1fr; gap:26px;
+    padding:32px 0; border-top:1px solid var(--border);
+    align-items:start;
+  }
+  .t-row:last-child{ border-bottom:1px solid var(--border); }
+  .t-row .idx{
+    font-family:'Fraunces',serif; font-size:1.4rem; color:var(--pink); font-weight:600;
+  }
+  .t-row h3{ font-size:1.2rem; }
+  .t-row p{ margin-top:9px; color:var(--muted); font-size:0.95rem; line-height:1.65; max-width:600px;}
+
+  /* ----- CTA ----- */
+  .sec-cta{
+    background:var(--ink); color:var(--paper);
+    text-align:center;
+  }
+  .sec-cta .section-inner{ padding:110px 0; }
+  .sec-cta .label{ justify-content:center; color:#b8b6bf; }
+  .sec-cta .label::before{ background:var(--pink); }
+  .sec-cta h2{
+    font-size:clamp(2rem,4.4vw,3.1rem);
+    max-width:680px; margin:20px auto 0;
+    line-height:1.14; color:#fff;
+  }
+  .sec-cta p{ margin:18px auto 0; max-width:480px; color:#b8b6bf; font-size:1.02rem; line-height:1.7;}
+  .sec-cta .hero-ctas{ justify-content:center; margin-top:34px;}
+  .sec-cta .btn-primary{ background:var(--pink); color:#fff; }
+  .sec-cta .btn-primary:hover{ background:var(--pink-deep); }
+  .sec-cta .btn-ghost{ border-color:rgba(255,255,255,0.28); color:#fff; background:transparent;}
+  .sec-cta .btn-ghost:hover{ border-color:#fff; }
+
+  footer{
+    background:var(--ink); color:#94929c;
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:28px 0; font-size:0.84rem; flex-wrap:wrap; gap:14px;
+  }
+  footer a{ text-decoration:none; color:#c2c0c9; margin-left:22px;}
+  footer a:hover{ color:#fff; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">
+      <img src="aura-logo.png" alt="AURA Awareness Logo" class="logo-img">
+    </div>
+    <div class="navlinks">
+      <a href="About Us.html">About</a>
+      <a href="Intiatives.html">Initiatives</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="index.html#progress">Progress</a>
+
+      <a href="https://www.instagram.com/aura.awareness/" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/@AURA-u1m7b" target="_blank" rel="noopener" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+      <a href="https://www.linkedin.com/company/awareness-and-urgent-risk-assessment/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+
+      <a class="cta" href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="label">Volunteer</div>
+    <h1>Time is a donation <span class="accent">too.</span></h1>
+    <p class="lead">AURA runs entirely on students who show up — organizing events, spreading awareness, and helping neighbors get screened. No medical background required, just a few hours and a reason to care.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#apply">Sign up to volunteer</a>
+      <a class="btn btn-ghost" href="#roles">See open roles</a>
+    </div>
+  </div>
+</section>
+
+<div class="stat-strip">
+  <div class="wrap">
+    <div class="item"><b>No experience</b>needed to get started</div>
+    <div class="item"><b>Flexible</b>one-time or ongoing commitments</div>
+    <div class="item"><b>100%</b>of funds raised support the American Cancer Society</div>
+  </div>
+</div>
+
+<section id="roles" class="sec-white sec-border-t">
+  <div class="wrap section-inner">
+    <div class="label">Ways to Help</div>
+    <h2 class="sec-heading" style="max-width:640px;">Find the role that fits your time.</h2>
+    <p class="body-copy" style="margin-top:16px;">Whether you've got an afternoon or a whole semester, there's a way to plug in.</p>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-icon"><i class="fa-solid fa-calendar-check"></i></div>
+        <div class="role-name">Event Support</div>
+        <p class="role-desc">Help set up, run, and break down screening drives, fundraisers, and awareness events in your community.</p>
+        <div class="role-tag">One-time or recurring</div>
+      </div>
+
+      <div class="role-card">
+        <div class="role-icon"><i class="fa-solid fa-bullhorn"></i></div>
+        <div class="role-name">Awareness &amp; Outreach</div>
+        <p class="role-desc">Spread the word on campus or online — share posts, table at events, or talk to classmates about early detection.</p>
+        <div class="role-tag">Flexible, remote-friendly</div>
+      </div>
+
+      <div class="role-card">
+        <div class="role-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+        <div class="role-name">Fundraising</div>
+        <p class="role-desc">Pitch in on donation drives, help set up campaigns, or reach out to local businesses about sponsoring an event.</p>
+        <div class="role-tag">Ongoing</div>
+      </div>
+
+      <div class="role-card">
+        <div class="role-icon"><i class="fa-solid fa-palette"></i></div>
+        <div class="role-name">Design &amp; Content</div>
+        <p class="role-desc">Help with graphics, art prints, social posts, or the website — creative hands are always needed.</p>
+        <div class="role-tag">Project-based</div>
+      </div>
+
+      <div class="role-card">
+        <div class="role-icon"><i class="fa-solid fa-people-group"></i></div>
+        <div class="role-name">Chapter Building</div>
+        <p class="role-desc">Help start or grow an AURA chapter at your school, from recruiting members to planning first events.</p>
+        <div class="role-tag">Semester commitment</div>
+      </div>
+
+      <div class="role-card">
+        <div class="role-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+        <div class="role-name">Operations</div>
+        <p class="role-desc">Support behind the scenes with scheduling, logistics, and keeping events and campaigns organized.</p>
+        <div class="role-tag">Flexible</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apply" class="sec-surface sec-border-t">
+  <div class="wrap section-inner">
+    <div class="label">How It Works</div>
+    <h2 class="sec-heading" style="max-width:640px;">Getting started takes a few minutes.</h2>
+
+    <div class="path-steps">
+      <div class="path-step">
+        <div class="step-label">Step 01</div>
+        <h3>Reach out</h3>
+        <p>Send us a message with your name, school or city, and what kind of role interests you.</p>
+      </div>
+      <div class="path-step">
+        <div class="step-label">Step 02</div>
+        <h3>Get matched</h3>
+        <p>We'll follow up with current opportunities that fit your availability and interests.</p>
+      </div>
+      <div class="path-step">
+        <div class="step-label">Step 03</div>
+        <h3>Show up</h3>
+        <p>Join an event, start a project, or help build out a chapter — whatever fits where you are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-white sec-border-t">
+  <div class="wrap section-inner">
+    <div class="label">Good to Know</div>
+    <h2 class="sec-heading" style="max-width:640px;">A few common questions.</h2>
+    <div class="t-list">
+      <div class="t-row">
+        <div class="idx">01</div>
+        <div>
+          <h3>Do I need any medical background?</h3>
+          <p>No. Most volunteer roles are focused on outreach, events, and logistics — not clinical work.</p>
+        </div>
+      </div>
+      <div class="t-row">
+        <div class="idx">02</div>
+        <div>
+          <h3>Do I need to be a student?</h3>
+          <p>Not at all. While AURA is student-run, community members of any age are welcome to get involved.</p>
+        </div>
+      </div>
+      <div class="t-row">
+        <div class="idx">03</div>
+        <div>
+          <h3>How much time does it take?</h3>
+          <p>As little or as much as you'd like — from a single event to an ongoing role throughout the year.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-cta">
+  <div class="wrap section-inner">
+    <div class="label">Get Involved</div>
+    <h2>Your time helps someone get screened a little sooner.</h2>
+    <p>Send us a message and we'll help you find the right way to plug in.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="mailto:hello@auraawareness.org">Email to volunteer</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/aura.awareness/" target="_blank" rel="noopener">Message us on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 AURA Awareness</div>
+    <div>
+      <a href="About Us.html">About</a>
+      <a href="Intiatives.html">Initiatives</a>
+      <a href="chapters.html">Chapters</a>
+      <a href="volunteer.html">Volunteer</a>
+      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
